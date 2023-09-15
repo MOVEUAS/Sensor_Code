@@ -15,7 +15,7 @@
 # Kaleb Nails, nailsk@my.erau.edu
 # Marc Compere, comperem@erau.edu
 # created : 10 Feb 2023
-# modified: 06 Apr 2023
+# modified: 15 Sep 2023
 
 """
 Example sketch to connect to PM2.5 sensor with either I2C or UART.
@@ -72,6 +72,14 @@ file = open(fname,'w')
                                            
 print("Found PM2.5 sensor, reading data...")
 
+#adds heading columns
+#Add Labels to the top of the file TEST this works
+titleStr = ',Date Label, Dates (YMD), Sensor 1, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
+file.write(titleStr  +"\n")
+file.flush()
+
+
+
 while True:
     time.sleep(1)
 
@@ -103,7 +111,7 @@ while True:
     print("Particles > 5.0um / 0.1L air:", aqdata["particles 50um"])
     print("Particles > 10 um / 0.1L air:", aqdata["particles 100um"])
     print("---------------------------------------")
-
+    dateStr1 =', Date:, {0}'.format(datetime.now())
 
 # while False:
     time.sleep(1)
@@ -137,7 +145,7 @@ while True:
     print("Particles2 > 10 um / 0.1L air:", aqdata2["particles 100um"])
     print("---------------------------------------")
     
-    dateStr =', Date:, {0}'.format(datetime.now())
+    dateStr2 =', Date:, {0}'.format(datetime.now())
     #dataStr1 = ', Data1:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"])
     #dataStr2 = ', Data2:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata2["particles 03um"],aqdata2["particles 05um"],aqdata2["particles 10um"],aqdata2["particles 25um"],aqdata2["particles 50um"],aqdata2["particles 100um"])
     
@@ -172,7 +180,7 @@ while True:
                     aqdata2["particles 25um"],     \
                     aqdata2["particles 50um"],     \
                     aqdata2["particles 100um"])
-    file.write(dateStr + dataStr1 + dataStr2 + "\n")
+    file.write(dateStr1 + dataStr1 + dateStr2 + dataStr2  +"\n")
     file.flush()
 
 
