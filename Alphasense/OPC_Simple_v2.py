@@ -19,11 +19,7 @@ spi.max_speed_hz = 500000
 spi.lsbfirst = False
 
 
-fname = '{0}_pm25_simplest_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
-file = open(fname,'w')
-titleStr = 'Serial Number,Date Label, Dates (YMD), Bin 0, Bin 1, Bin 2, Bin 3, Bin 4, Bin 5, Bin 6, Bin 7, Bin 8, Bin 9, Bin 10, Bin 11, Bin 12, Bin 13, Bin 14, Bin 15, Bin 16, Bin 17, Bin 18, Bin 19, Bin 20, Bin 21, Bin 22, Bin 23, Bin1 MToF,Bin3 MToF,Bin5 MToF,Bin7 MToF,Sampling Period,SFR,Temperature,Relative humidity,PM1,PM2.5,PM10,#RejectGlitch,#RejectLongTOF,#RejectRatio,#RejectOutOfRange,Fan rev count,Laser status,Checksum'
-file.write(titleStr  +"\n")
-file.flush()
+
 
 #This is to hand interuptions and turn the alphasense
 def handle_interrupt(signal, frame):
@@ -34,13 +30,28 @@ def handle_interrupt(signal, frame):
 signal.signal(signal.SIGINT, handle_interrupt)
 
 
-
+#This detects which model of opc and prints the relevent data
 dev = opc.detect(spi)
 print(f'device information: {dev.info()}')
 print(f'serial: {dev.serial()}')
+
+#this just formats the serial number string to look better
 SerialNumberStr = str(dev.serial())
+SerialNumberStr = SerialNumberStr.replace("N3","N3-")
+SerialNumberStr = SerialNumberStr.replace(" ","")
+
 print(f'firmware version: {dev.serial()}')
 # power on fan and laser
+
+
+
+fname = '{0}_Alphasense_{1}.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S"), SerialNumberStr)
+file = open(fname,'w')
+titleStr = 'Serial Number,Date Label, Dates (YMD), Bin 0, Bin 1, Bin 2, Bin 3, Bin 4, Bin 5, Bin 6, Bin 7, Bin 8, Bin 9, Bin 10, Bin 11, Bin 12, Bin 13, Bin 14, Bin 15, Bin 16, Bin 17, Bin 18, Bin 19, Bin 20, Bin 21, Bin 22, Bin 23, Bin1 MToF,Bin3 MToF,Bin5 MToF,Bin7 MToF,Sampling Period,SFR,Temperature,Relative humidity,PM1,PM2.5,PM10,#RejectGlitch,#RejectLongTOF,#RejectRatio,#RejectOutOfRange,Fan rev count,Laser status,Checksum'
+file.write(titleStr  +"\n")
+file.flush()
+
+
 
 dev.on()
 
