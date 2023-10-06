@@ -1,21 +1,37 @@
-from time import sleep
+#Created by: Kaleb Nails, Erik Liebergall
+#Date: 10/6/2023
+#from time import sleep
 from usbiss.spi import SPI
 import opcng as opc
+import os
+import time
+import signal
+import subprocess
+from datetime import datetime # datetime.now()
+
+#This exits one directory at a time so its on the local computer so you dont get csvs on your repository
+os.chdir("..")
+os.chdir("..")
+
 spi = SPI('/dev/ttyACM0')
 spi.mode = 1
 spi.max_speed_hz = 500000
 spi.lsbfirst = False
 
-from datetime import datetime # datetime.now()
-
 
 fname = '{0}_pm25_simplest_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
 file = open(fname,'w')
-titleStr = ',Date Label, Dates (YMD), Sensor 1, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
-#file.write(titleStr  +"\n")
+titleStr = ',Date Label, Dates (YMD), Bin 0, Bin 1, Bin 2, Bin 3, Bin 4, Bin 5, Bin 6, Bin 7, Bin 8, Bin 9, Bin 10, Bin 11, Bin 12, Bin 13, Bin 14, Bin 15, Bin 16, Bin 17, Bin 18, Bin 19, Bin 20, Bin 21, Bin 22, Bin 23, Bin1 MToF,Bin3 MToF,Bin5 MToF,Bin7 MToF,Sampling Period,SFR,Temperature,Relative humidity,PM1,PM2.5,PM10,#RejectGlitch,#RejectLongTOF,#RejectRatio,#RejectOutOfRange,Fan rev count,Laser status,Checksum'
+file.write(titleStr  +"\n")
 file.flush()
 
+#This is to hand interuptions and turn the alphasense
+def handle_interrupt(signal, frame):
+    print("Ctrl+C pressed. Performing cleanup or other actions...")
+    dev.off()
+    exit(0)  # Terminate the script gracefully
 
+signal.signal(signal.SIGINT, handle_interrupt)
 
 
 
@@ -30,7 +46,7 @@ dev.on()
 while True:
     try:
        # query particle mass readings
-        sleep(1)
+        time.sleep(1)
         #print(dev.pm())
         #print(dev.histogram())
         recorded_data = dev.histogram()
