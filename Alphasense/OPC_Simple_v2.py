@@ -1,6 +1,16 @@
 from time import sleep
 from usbiss.spi import SPI
 import opcng as opc
+from datetime import datetime # datetime.now()
+
+
+fname = '{0}_pm25_simplest_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
+file = open(fname,'w')
+titleStr = ',Date Label, Dates (YMD), Sensor 1, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
+file.write(titleStr  +"\n")
+file.flush()
+
+
 
 spi = SPI('/dev/ttyACM0')
 spi.mode = 1
@@ -13,17 +23,29 @@ print(f'device information: {dev.info()}')
 print(f'serial: {dev.serial()}')
 print(f'firmware version: {dev.serial()}')
 
-# power on fan and laser
-dev.on()
 
-for i in range(10):
-    # query particle mass readings
-    sleep(1)
-    #print(dev.pm())
-    print(dev.histogram())
+while True:
 
-# power off fan and laser
-dev.off()
+    try:
+        # power on fan and laser
+        dev.on()
+
+        recorded_data = dev.histogram()
+        #print(dev.histogram())
+
+        # power off fan and laser
+        dev.off()
+
+    except RuntimeError:
+        print("Unable to read from sensor, retrying...")
+        continue
+
+
+    dataStr1 = ', {0}, {1}, {2},    {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}'.format(recorded_data['Bin0'],
+    dateStr =', Date:, {0}'.format(datetime.now())
+    file.write(dateStr + dataStr + "\n")
+    file.flush()
+
 
 
 
