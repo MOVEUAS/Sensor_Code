@@ -21,7 +21,7 @@ spi.lsbfirst = False
 
 fname = '{0}_pm25_simplest_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
 file = open(fname,'w')
-titleStr = ',Date Label, Dates (YMD), Bin 0, Bin 1, Bin 2, Bin 3, Bin 4, Bin 5, Bin 6, Bin 7, Bin 8, Bin 9, Bin 10, Bin 11, Bin 12, Bin 13, Bin 14, Bin 15, Bin 16, Bin 17, Bin 18, Bin 19, Bin 20, Bin 21, Bin 22, Bin 23, Bin1 MToF,Bin3 MToF,Bin5 MToF,Bin7 MToF,Sampling Period,SFR,Temperature,Relative humidity,PM1,PM2.5,PM10,#RejectGlitch,#RejectLongTOF,#RejectRatio,#RejectOutOfRange,Fan rev count,Laser status,Checksum'
+titleStr = 'Serial Number,Date Label, Dates (YMD), Bin 0, Bin 1, Bin 2, Bin 3, Bin 4, Bin 5, Bin 6, Bin 7, Bin 8, Bin 9, Bin 10, Bin 11, Bin 12, Bin 13, Bin 14, Bin 15, Bin 16, Bin 17, Bin 18, Bin 19, Bin 20, Bin 21, Bin 22, Bin 23, Bin1 MToF,Bin3 MToF,Bin5 MToF,Bin7 MToF,Sampling Period,SFR,Temperature,Relative humidity,PM1,PM2.5,PM10,#RejectGlitch,#RejectLongTOF,#RejectRatio,#RejectOutOfRange,Fan rev count,Laser status,Checksum'
 file.write(titleStr  +"\n")
 file.flush()
 
@@ -38,6 +38,7 @@ signal.signal(signal.SIGINT, handle_interrupt)
 dev = opc.detect(spi)
 print(f'device information: {dev.info()}')
 print(f'serial: {dev.serial()}')
+SerialNumberStr = str(dev.serial())
 print(f'firmware version: {dev.serial()}')
 # power on fan and laser
 
@@ -62,7 +63,8 @@ while True:
 
     dateStr =', Date:, {0}'.format(datetime.now())
 
-    file.write(dateStr + dataStr + "\n")
+    print("\n" + SerialNumberStr + dateStr + dataStr + "\n")
+    file.write(SerialNumberStr + dateStr + dataStr + "\n")
     file.flush()
 
 # power off fan and laser
