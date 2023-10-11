@@ -17,11 +17,13 @@
 
 from sps30 import get_usb
 from sps30 import SPS30
+import time
 
 device='/dev/ttyUSB0'
 #device='/dev/ttyUSB1'
 
-p = SPS30(port=device, push_mqtt=True)
+p = SPS30(port=device, push_mqtt=False)
+print(p.read_serial_number())
 
 docStr=[]
 docStr.append('Mass Concentration PM1.0 (µg/m³)')
@@ -38,8 +40,12 @@ docStr.append('Typical Particle Size [µm]')
 for i in range(len(docStr)):
     print('{0}, '.format(docStr[i]), end='')
 
+p.start()
+p.stop()
+time.sleep(1)
 while True:
     out=p.read_values()
     for i in range(len(out)):
        print('{0}, '.format(out[i]), end='')
     print('')
+    time.sleep(1)
