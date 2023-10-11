@@ -25,6 +25,7 @@ Example sketch to connect to PM2.5 sensor with either I2C or UART.
 import time
 import board
 import busio
+import os
 from datetime import datetime # datetime.now()
 from digitalio import DigitalInOut, Direction, Pull
 #from adafruit_pm25.i2c import PM25_I2C
