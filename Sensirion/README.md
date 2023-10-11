@@ -21,3 +21,12 @@ https://binh-bk.github.io/Sensirion_SPS30/
 
 
 NOTE FOR OUR USB TO UART, white is the reciever & green is the transmitter.
+
+
+also note:
+USB - SENSOR:
+red - red
+black -black
+white - purple
+green -white
+nothing - green
