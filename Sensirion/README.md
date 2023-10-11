@@ -18,3 +18,6 @@ https://binh-bk.github.io/Sensirion_SPS30/
 
 ## Hardware Interface & Ports ##
 ![image](https://github.com/MOVEUAS/Sensor_Code/assets/117048000/1d0e7864-0a3f-4848-bdcf-2cc4c035eff0)
+
+
+NOTE FOR OUR USB TO UART, white is the reciever & green is the transmitter.
