@@ -6,6 +6,8 @@ The sensor can record using both uart and I2C, for this we will be using uart
 ## sps30.py ##
 This is a file that comes from https://github.com/binh-bk/Sensirion_SPS30/blob/master/sps30.py and is used to collect sps30 data.
 
+# exampleReadSPS30.py #
+This is a simple examle on how to read the Sensirion sensor
 
 ## Reference Links ##
 Data-sheet: https://cdn.sparkfun.com/assets/4/e/e/f/8/Sensirion_PM_Sensors_Datasheet_SPS30.pdf
