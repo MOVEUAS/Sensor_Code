@@ -15,7 +15,7 @@
 # Kaleb Nails, nailsk@my.erau.edu
 # Marc Compere, comperem@erau.edu
 # created : 10 Feb 2023
-# modified: 15 Sep 2023
+# modified: 11 Oct 2023
 
 """
 Example sketch to connect to PM2.5 sensor with either I2C or UART.
@@ -52,16 +52,16 @@ reset_pin = None
 # For use with USB-to-serial cable:
 import serial
 
-dev1='/dev/ttyUSB1'
-dev2='/dev/ttyUSB2'
+dev1='/dev/ttyUSB0'
+# dev2='/dev/ttyUSB2'
 
 uart = serial.Serial(dev1, baudrate=9600, timeout=0.25)
-uart2 = serial.Serial(dev2, baudrate=9600, timeout=0.25)
+# uart2 = serial.Serial(dev2, baudrate=9600, timeout=0.25)
 
 # Connect to a PM2.5 sensor over UART
 from adafruit_pm25.uart import PM25_UART
 pm25 = PM25_UART(uart, reset_pin)
-pm25_2 = PM25_UART(uart2, reset_pin)
+# pm25_2 = PM25_UART(uart2, reset_pin)
 
 # Create library object, use 'slow' 100KHz frequency!
 #i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
@@ -116,36 +116,36 @@ while True:
 # while False:
     time.sleep(1)
 
-    try:
-        aqdata2 = pm25_2.read()
-        # print(aqdata)
-    except RuntimeError:
-        print("Unable to read from sensor, retrying...")
-        continue
+    # try:
+    #     aqdata2 = pm25_2.read()
+    #     # print(aqdata)
+    # except RuntimeError:
+    #     print("Unable to read from sensor, retrying...")
+    #     continue
 
-    print()
-    print("Concentration Units (standard)")
-    print("---------------------------------------")
-    print(
-        "PM 1.0: %d\tPM2.5: %d\tPM10: %d"
-        % (aqdata2["pm10 standard"], aqdata2["pm25 standard"], aqdata2["pm100 standard"])
-    )
-    print("Concentration Units (environmental)")
-    print("---------------------------------------")
-    print(
-        "PM 1.0: %d\tPM2.5: %d\tPM10: %d"
-        % (aqdata2["pm10 env"], aqdata2["pm25 env"], aqdata2["pm100 env"])
-    )
-    print("---------------------------------------")
-    print("Particles2 > 0.3um / 0.1L air:", aqdata2["particles 03um"])
-    print("Particles2 > 0.5um / 0.1L air:", aqdata2["particles 05um"])
-    print("Particles2 > 1.0um / 0.1L air:", aqdata2["particles 10um"])
-    print("Particles2 > 2.5um / 0.1L air:", aqdata2["particles 25um"])
-    print("Particles2 > 5.0um / 0.1L air:", aqdata2["particles 50um"])
-    print("Particles2 > 10 um / 0.1L air:", aqdata2["particles 100um"])
-    print("---------------------------------------")
+    # print()
+    # print("Concentration Units (standard)")
+    # print("---------------------------------------")
+    # print(
+    #     "PM 1.0: %d\tPM2.5: %d\tPM10: %d"
+    #     % (aqdata2["pm10 standard"], aqdata2["pm25 standard"], aqdata2["pm100 standard"])
+    # )
+    # print("Concentration Units (environmental)")
+    # print("---------------------------------------")
+    # print(
+    #     "PM 1.0: %d\tPM2.5: %d\tPM10: %d"
+    #     % (aqdata2["pm10 env"], aqdata2["pm25 env"], aqdata2["pm100 env"])
+    # )
+    # print("---------------------------------------")
+    # print("Particles2 > 0.3um / 0.1L air:", aqdata2["particles 03um"])
+    # print("Particles2 > 0.5um / 0.1L air:", aqdata2["particles 05um"])
+    # print("Particles2 > 1.0um / 0.1L air:", aqdata2["particles 10um"])
+    # print("Particles2 > 2.5um / 0.1L air:", aqdata2["particles 25um"])
+    # print("Particles2 > 5.0um / 0.1L air:", aqdata2["particles 50um"])
+    # print("Particles2 > 10 um / 0.1L air:", aqdata2["particles 100um"])
+    # print("---------------------------------------")
     
-    dateStr2 =', Date:, {0}'.format(datetime.now())
+    # dateStr2 =', Date:, {0}'.format(datetime.now())
     #dataStr1 = ', Data1:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"])
     #dataStr2 = ', Data2:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata2["particles 03um"],aqdata2["particles 05um"],aqdata2["particles 10um"],aqdata2["particles 25um"],aqdata2["particles 50um"],aqdata2["particles 100um"])
     
@@ -165,22 +165,24 @@ while True:
                     aqdata["particles 50um"],      \
                     aqdata["particles 100um"])
                      
-    dataStr2 = ', Data2:, {0}, {1}, {2},    {3}, {4}, {5},    {6}, {7}, {8}, {9}, {10}, {11}'.format( \
-                    aqdata2["pm10 standard"],      \
-                    aqdata2["pm25 standard"],      \
-                    aqdata2["pm100 standard"],     \
+    # dataStr2 = ', Data2:, {0}, {1}, {2},    {3}, {4}, {5},    {6}, {7}, {8}, {9}, {10}, {11}'.format( \
+    #                 aqdata2["pm10 standard"],      \
+    #                 aqdata2["pm25 standard"],      \
+    #                 aqdata2["pm100 standard"],     \
                     
-                    aqdata2["pm10 env"],           \
-                    aqdata2["pm25 env"],           \
-                    aqdata2["pm100 env"],          \
+    #                 aqdata2["pm10 env"],           \
+    #                 aqdata2["pm25 env"],           \
+    #                 aqdata2["pm100 env"],          \
                     
-                    aqdata2["particles 03um"],     \
-                    aqdata2["particles 05um"],     \
-                    aqdata2["particles 10um"],     \
-                    aqdata2["particles 25um"],     \
-                    aqdata2["particles 50um"],     \
-                    aqdata2["particles 100um"])
-    file.write(dateStr1 + dataStr1 + dateStr2 + dataStr2  +"\n")
+    #                 aqdata2["particles 03um"],     \
+    #                 aqdata2["particles 05um"],     \
+    #                 aqdata2["particles 10um"],     \
+    #                 aqdata2["particles 25um"],     \
+    #                 aqdata2["particles 50um"],     \
+    #                 aqdata2["particles 100um"])
+    # file.write(dateStr1 + dataStr1 + dateStr2 + dataStr2  +"\n")
+
+    file.write(dateStr1 + dataStr1 + "\n")
     file.flush()
 
 
