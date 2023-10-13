@@ -12,6 +12,7 @@
 #
 # Erik Liebergall, lieberge@my.erau.edu
 # Marc Compere, comperem@erau.edu
+# Kaleb Nails
 # created : 02 Feb 2023
 # modified: 02 Feb 2023
 
@@ -41,9 +42,13 @@ for i in range(len(docStr)):
     print('{0}, '.format(docStr[i]), end='')
 
 p.start()
-p.stop()
-time.sleep(1)
+#p.stop()
+
+#This sleep is very important
+print(' \n LOADING... \n')
+time.sleep(5)
 while True:
+
     out=p.read_values()
     for i in range(len(out)):
        print('{0}, '.format(out[i]), end='')
