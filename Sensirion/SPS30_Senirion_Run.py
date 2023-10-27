@@ -23,9 +23,30 @@ from sps30 import SPS30
 import time
 from datetime import datetime
 import os
+import sys
+
 
 device='/dev/ttyUSB0'
 #device='/dev/ttyUSB1'
+
+
+
+if len(sys.argv)==1:
+    #print('sys.argv[0]={0}'.format(sys.argv[0]))
+    print('provide a device name to read, like:')
+    print('    python3 pm25_SPS30_Senirion_Run.py /dev/ttyUSB0' +"\n")
+    print('\033[91mWARNING: DEFAULT PORT WILL BE USB0\033[0m' +"\n")
+    print('this default setting was left for developement' + "\n" + "\n")
+    time.sleep(2.5)
+
+
+
+if len(sys.argv)>1:
+    print('using command line arg, and provided device!')
+    device=sys.argv[1]
+
+devName=os.path.basename(device) # get device name for logfile name
+print('using devName=[{0}]'.format(devName)+"\n")
 
 p = SPS30(port=device, push_mqtt=False)
 

@@ -127,11 +127,9 @@ class SPS30:
 
     def start(self):
         self.ser.write([0x7E, 0x00, 0x00, 0x02, 0x01, 0x03, 0xF9, 0x7E])
-        print('Started message sent')
-        
+
     def stop(self):
         self.ser.write([0x7E, 0x00, 0x01, 0x00, 0xFE, 0x7E])
-        print('stopped message sent')
 
     def read_values(self):
         self.ser.flushInput()
