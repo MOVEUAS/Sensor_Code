@@ -4,5 +4,5 @@ Hello! If you would like a basic tutorial on how to use GitHub pulls and pushes,
 
 Here are our sensors we use:
 
-PMS5003 PM2.5 Air Quality Sensor
+PMS5003 PM2.5 Air Quality Sensor or the PMS plantower
 ![Alt Text](https://m.media-amazon.com/images/I/71+cgzmX+pL._AC_SX679_.jpg)
