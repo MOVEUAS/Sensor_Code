@@ -122,6 +122,7 @@ while True:
 
     print()
     print("Concentration Units (standard)")
+    print(f"TIME: {time.strftime('%H:%M:%S', time.localtime())}")
     print("---------------------------------------")
     print(
         "PM 1.0: %d\tPM2.5: %d\tPM10: %d"
@@ -144,7 +145,7 @@ while True:
     dateStr1 =', Date:, {0}'.format(datetime.now())
 
 # while False:
-    time.sleep(1)
+    #time.sleep(1)
 
     # try:
     #     aqdata2 = pm25_2.read()
