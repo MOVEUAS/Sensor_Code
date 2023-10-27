@@ -22,13 +22,19 @@ Example sketch to connect to PM2.5 sensor with either I2C or UART.
 """
 
 # pylint: disable=unused-import
+
+
 import time
 import board
-import busio
+import busio #pip3 install adafruit-blinka
 import os
+import sys
 from datetime import datetime # datetime.now()
 from digitalio import DigitalInOut, Direction, Pull
 #from adafruit_pm25.i2c import PM25_I2C
+
+# For use with USB-to-serial cable:
+import serial
 
 # go back 2 directories to store CSV's
 os.chdir("..")
@@ -53,17 +59,37 @@ reset_pin = None
 # import serial
 # uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=0.25)
 
-# For use with USB-to-serial cable:
-import serial
 
 dev1='/dev/ttyUSB0'
 # dev2='/dev/ttyUSB2'
+
+
+if len(sys.argv)==1:
+    #print('sys.argv[0]={0}'.format(sys.argv[0]))
+    print('provide a device name to read, like:')
+    print('    python3 pm25_simpletest.py /dev/ttyUSB0' +"\n")
+    print('\033[91mWARNING: DEFAULT PORT WILL BE USB0\033[0m' +"\n")
+    print('this default setting was left for developement' + "\n" + "\n")
+    time.sleep(2.5)
+
+
+
+if len(sys.argv)>1:
+    print('using command line arg, and provided device!')
+    dev1=sys.argv[1]
+
+devName=os.path.basename(dev1) # get device name for logfile name
+print('using devName=[{0}]'.format(devName))
+
+
+
+
 
 uart = serial.Serial(dev1, baudrate=9600, timeout=0.25)
 # uart2 = serial.Serial(dev2, baudrate=9600, timeout=0.25)
 
 # Connect to a PM2.5 sensor over UART
-from adafruit_pm25.uart import PM25_UART
+from adafruit_pm25.uart import PM25_UART #pip3 install adafruit-circuitpython-pm25
 pm25 = PM25_UART(uart, reset_pin)
 # pm25_2 = PM25_UART(uart2, reset_pin)
 
@@ -73,12 +99,12 @@ pm25 = PM25_UART(uart, reset_pin)
 #pm25 = PM25_I2C(i2c, reset_pin)
 fname = '{0}_pm25_simplest_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
 file = open(fname,'w')
-                                           
+
 print("Found PM2.5 sensor, reading data...")
 
 #adds heading columns
 #Add Labels to the top of the file TEST this works
-titleStr = ',Date Label, Dates (YMD), Sensor 1, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
+titleStr = ',Date Label, Dates (YMD), Sensor 1, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'#, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
 file.write(titleStr  +"\n")
 file.flush()
 
@@ -148,36 +174,36 @@ while True:
     # print("Particles2 > 5.0um / 0.1L air:", aqdata2["particles 50um"])
     # print("Particles2 > 10 um / 0.1L air:", aqdata2["particles 100um"])
     # print("---------------------------------------")
-    
+
     # dateStr2 =', Date:, {0}'.format(datetime.now())
     #dataStr1 = ', Data1:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"])
     #dataStr2 = ', Data2:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata2["particles 03um"],aqdata2["particles 05um"],aqdata2["particles 10um"],aqdata2["particles 25um"],aqdata2["particles 50um"],aqdata2["particles 100um"])
-    
+
     dataStr1 = ', Data1:, {0}, {1}, {2},    {3}, {4}, {5},    {6}, {7}, {8}, {9}, {10}, {11}'.format( \
                     aqdata["pm10 standard"],       \
                     aqdata["pm25 standard"],       \
                     aqdata["pm100 standard"],      \
-                     
+
                     aqdata["pm10 env"],            \
                     aqdata["pm25 env"],            \
                     aqdata["pm100 env"],           \
-                    
+
                     aqdata["particles 03um"],      \
                     aqdata["particles 05um"],      \
                     aqdata["particles 10um"],      \
                     aqdata["particles 25um"],      \
                     aqdata["particles 50um"],      \
                     aqdata["particles 100um"])
-                     
+
     # dataStr2 = ', Data2:, {0}, {1}, {2},    {3}, {4}, {5},    {6}, {7}, {8}, {9}, {10}, {11}'.format( \
     #                 aqdata2["pm10 standard"],      \
     #                 aqdata2["pm25 standard"],      \
     #                 aqdata2["pm100 standard"],     \
-                    
+
     #                 aqdata2["pm10 env"],           \
     #                 aqdata2["pm25 env"],           \
     #                 aqdata2["pm100 env"],          \
-                    
+
     #                 aqdata2["particles 03um"],     \
     #                 aqdata2["particles 05um"],     \
     #                 aqdata2["particles 10um"],     \
@@ -188,29 +214,3 @@ while True:
 
     file.write(dateStr1 + dataStr1 + "\n")
     file.flush()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
