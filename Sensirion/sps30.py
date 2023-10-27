@@ -13,7 +13,7 @@ from operator import invert
 import os
 import json
 import socket
-import paho.mqtt.publish as publish
+import paho.mqtt.publish as publish #pip install paho-mqtt
 
 # set localtime
 os.environ['TZ'] = 'Asia/Ho_Chi_Minh'
