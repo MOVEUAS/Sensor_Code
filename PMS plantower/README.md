@@ -3,7 +3,7 @@ Official Documentation:
 https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf
 
 Necessary uncommon imports pip commands are found on the line they are imported in.
-
+(THIS IMAGE IS NOT THE EXACT SENSOR, BUT THEY ARE THE SAME AT A GLANCE, just for reference)
 ![Alt Text](https://m.media-amazon.com/images/I/71+cgzmX+pL._AC_SX679_.jpg)
 
 
