@@ -33,8 +33,28 @@ def handle_interrupt(signal, frame):
 signal.signal(signal.SIGINT, handle_interrupt)
 
 
+device='/dev/ttyACM0'
+#device='/dev/ttyUSB1'
+
+
+
+if len(sys.argv)==1:
+    #print('sys.argv[0]={0}'.format(sys.argv[0]))
+    print('provide a device name to read, like:')
+    print('    python3 pm25_SPS30_Senirion_Run.py /dev/ttyACM0' +"\n")
+    print('\033[91mWARNING: DEFAULT PORT WILL BE ACM0\033[0m' +"\n")
+    print('this default setting was left for developement' + "\n" + "\n")
+    time.sleep(2.5)
+
+
+
+if len(sys.argv)>1:
+    print('using command line arg, and provided device!')
+    device=sys.argv[1]
+
+
 #setting up more sensor stuff from the library
-spi = SPI('/dev/ttyACM0')
+spi = SPI(device)
 spi.mode = 1
 spi.max_speed_hz = 500000
 spi.lsbfirst = False
