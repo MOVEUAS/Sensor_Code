@@ -97,14 +97,14 @@ pm25 = PM25_UART(uart, reset_pin)
 #i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
 # Connect to a PM2.5 sensor over I2C
 #pm25 = PM25_I2C(i2c, reset_pin)
-fname = '{0}_pm25_simplest_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
+fname = '{0}_pm25_simplest_plantower_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
 file = open(fname,'w')
 
 print("Found PM2.5 sensor, reading data...")
 
 #adds heading columns
 #Add Labels to the top of the file TEST this works
-titleStr = ',Date Label, Dates (YMD), Sensor 1, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'#, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
+titleStr = ',Date Label, Dates (YMD), Sensor 1, pm1.0 standard ug/m3, pm2.5 standard ug/m3, pm10.0 standard ug/m3, pm1.0 env ug/m3, pm2.5 env ug/m3, pm10.0 env ug/m3,particles 0.3um, particles 0.5um, particles 1.0um, particles 2.5um, particles 5.0um, particles 10.0um'#, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
 file.write(titleStr  +"\n")
 file.flush()
 
