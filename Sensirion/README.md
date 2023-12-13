@@ -30,3 +30,6 @@ black -black
 white - purple
 green -white
 nothing - green
+
+HERE IS THE OUTPUT:
+![image](https://github.com/MOVEUAS/Sensor_Code/assets/117048000/bbf6a458-fb85-43ca-ae11-5ab87164ae53)
