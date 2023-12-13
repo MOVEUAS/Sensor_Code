@@ -62,7 +62,7 @@ os.chdir("..")
 #This creates the file and the first row and and the labels
 fname = '{0}_Sensirion_sps30_{1}.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S"), SerialNumberStr)
 file = open(fname,'w')
-titleStr = 'Serial Number,Date Label, Dates (YMD), Mass Concentration PM1.0 (µg/m³),Mass Concentration PM2.5 (µg/m³),Mass Concentration PM4.0 (µg/m³),Mass Concentration PM10.0 (µg/m³),Number Concentration PM0.5 (µg/m³),Number Concentration PM1.0 (µg/m³),Number Concentration PM2.5 (µg/m³),Number Concentration PM4.0(µg/m³),Number Concentration PM10.0 (µg/m³),Typical Particle Size [µm]'
+titleStr = 'Serial Number,Date Label, Dates (YMD), Mass Concentration PM1.0 (µg/m³),Mass Concentration PM2.5 (µg/m³),Mass Concentration PM4.0 (µg/m³),Mass Concentration PM10.0 (µg/m³),Number Concentration PM0.5 (µg/m³),Number Concentration PM1.0 (#/cm³),Number Concentration PM2.5 (#/cm³),Number Concentration PM4.0(#/cm³),Number Concentration PM10.0 (#/cm³),Typical Particle Size [µm]'
 file.write(titleStr  +"\n")
 file.flush()
 
