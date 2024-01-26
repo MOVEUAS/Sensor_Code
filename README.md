@@ -94,6 +94,7 @@ The script outputs air quality information to a CSV file. The CSV format include
 - **Fan rev count**
 - **Laser status**
 - **Checksum**
+
 Each row in the CSV file represents a set of air quality measurements at a specific date and time, with corresponding values for each parameter.
 
 ## PMS plantower CSV File Format
