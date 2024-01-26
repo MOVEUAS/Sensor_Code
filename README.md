@@ -4,7 +4,7 @@ This repository contains code for different air quality sensors. Each directory 
 # Sensor Models #
 
 ## ALPHASENSE OPC
-![Alphasense Optical Particle Sensor](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alibaba.com%2Fproduct-detail%2FAlphasense-Optical-Particle-Sensor-PM1-PM2_60719814502.html&psig=AOvVaw3F4dcEPU_PQr-lvnn87pDb&ust=1706394926582000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJil5uiO_IMDFQAAAAAdAAAAABAQ)
+![image](https://github.com/MOVEUAS/Sensor_Code/assets/117048000/2488073d-5645-47d8-9b6e-21c8f2c8ef74)
 
 **Authors:** Kaleb Nails, Erik Liebergall, Marc Compere  
 **Created:** 10/6/2023  
@@ -21,11 +21,9 @@ This directory contains code for the ALSPHASENSE air quality sensor. The main sc
 The script will log air quality data to a CSV file with a timestamp.
 
 
-
-
-
-
 ## PMS plantower
+![image](https://github.com/MOVEUAS/Sensor_Code/assets/117048000/e1553597-c06a-49dd-b361-26345a3ea2d6)
+
 **Authors:** Erik Liebergall, Leah Smith, Kaleb Nails, Marc Compere  
 **Created:** 10 Feb 2023  
 
@@ -61,6 +59,8 @@ Particles > 10um / 0.1L air: 50
 ## Sensirion SPS30
 **Authors:** Erik Liebergall, Marc Compere, Kaleb Nails  
 **Created:** 13 Oct 2023
+
+![image](https://github.com/MOVEUAS/Sensor_Code/assets/117048000/af3127f4-a29f-4fac-9898-43c5310545e8)
 
 ### Description
 This directory contains code for the Sensirion SPS30 air quality sensor. The `pm25_SPS30_Senirion_Run.py` script interfaces with the sensor, reads data, and logs air quality information to a CSV file.
