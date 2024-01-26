@@ -37,21 +37,24 @@ This directory contains code for the PMS plantower air quality sensor. The `pm25
    python3 pm25_simpletest.py /dev/ttyUSB0
 
 ### Output
-The script continuously reads data from the sensor and prints the concentration units (standard and environmental) for PM1.0, PM2.5, and PM10.0. Additionally, it outputs particle counts for different particle sizes.
+The script provides air quality measurements in both standard and environmental concentration units. Below is an example output:
 
-Concentration Units (standard)
+```plaintext
+Concentration Units (Standard)
 ---------------------------------------
-PM 1.0: 10  PM2.5: 15  PM10: 20
-Concentration Units (environmental)
+PM 1.0: 10   PM 2.5: 15   PM 10: 20
+
+Concentration Units (Environmental)
 ---------------------------------------
-PM 1.0: 8   PM2.5: 12  PM10: 16
+PM 1.0: 8    PM 2.5: 12   PM 10: 16
 ---------------------------------------
 Particles > 0.3um / 0.1L air: 1000
 Particles > 0.5um / 0.1L air: 800
 Particles > 1.0um / 0.1L air: 500
 Particles > 2.5um / 0.1L air: 200
 Particles > 5.0um / 0.1L air: 100
-Particles > 10 um / 0.1L air: 50
+Particles > 10um / 0.1L air: 50
+
 
 ## Sensirion SPS30
 **Authors:** Erik Liebergall, Marc Compere, Kaleb Nails  
