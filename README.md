@@ -4,6 +4,8 @@ This repository contains code for different air quality sensors. Each directory 
 # Sensor Models #
 
 ## ALPHASENSE OPC
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alibaba.com%2Fproduct-detail%2FAlphasense-Optical-Particle-Sensor-PM1-PM2_60719814502.html&psig=AOvVaw3F4dcEPU_PQr-lvnn87pDb&ust=1706394926582000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJil5uiO_IMDFQAAAAAdAAAAABAQ
+
 **Authors:** Kaleb Nails, Erik Liebergall, Marc Compere  
 **Created:** 10/6/2023  
 
