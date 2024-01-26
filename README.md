@@ -3,12 +3,12 @@ This repository contains code for different air quality sensors. Each directory 
 
 # Sensor Models #
 
-## ALPHASENSE
+## ALPHASENSE OPC
 **Authors:** Kaleb Nails, Erik Liebergall, Marc Compere  
 **Created:** 10/6/2023  
 
 ### Description
-This directory contains code for the ALSPHASENSE air quality sensor. The main script, `pm25_SPS30_Senirion_Run.py`, interfaces with the sensor, reads data, and logs it to a CSV file.
+This directory contains code for the ALSPHASENSE air quality sensor. The main script, `OPC_Simple_v2.py`, interfaces with the sensor, reads data, and logs it to a CSV file.
 
 ### Instructions
 1. Connect the ALSPHASENSE sensor to your system.
