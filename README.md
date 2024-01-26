@@ -10,11 +10,11 @@ This repository contains code for different air quality sensors. Each directory 
 **Created:** 10/6/2023  
 
 ### Description
-This directory contains code for the ALSPHASENSE air quality sensor. The main script, `OPC_Simple_v2.py`, interfaces with the sensor, reads data, and logs it to a CSV file.
+This directory contains code for the ALSPHASENSE air quality sensor. The main script, `OPC_Simple_v2.py`, interfaces with the sensor, reads data, and logs it to a CSV file. This is using the USB adaptor for the Alphasenses
 
 ### Instructions
 1. Connect the ALSPHASENSE sensor to your system.
-2. Run the `pm25_SPS30_Senirion_Run.py` script with the appropriate device name as a command-line argument (default is `/dev/ttyUSB0`).
+2. Run the `pm25_SPS30_Senirion_Run.py` script with the appropriate device name as a command-line argument (default is `/dev/ttyACM0`).
    ```bash
    python3 pm25_SPS30_Senirion_Run.py /dev/ttyUSB0
    
