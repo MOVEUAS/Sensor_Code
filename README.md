@@ -2,7 +2,7 @@
 
 This repository contains code for different air quality sensors. Each directory represents a specific sensor model, and the code within each directory is tailored to that sensor. Authors listed are immediate authors to our club, of course a lot of this code is found from other online, and the are cited within the programs files themselves.
 
-## Sensor Models ##
+# Sensor Models #
 
 ## ALPHASENSE
 
@@ -27,23 +27,23 @@ The script will log air quality data to a CSV file with a timestamp.
 
 
 
-# PMS plantower
+## PMS plantower
 
 **Authors:** Erik Liebergall, Leah Smith, Kaleb Nails, Marc Compere  
 **Created:** 10 Feb 2023  
 
-## Description
+### Description
 
 This directory contains code for the PMS plantower air quality sensor. The `pm25_simpletest.py` script interfaces with the sensor, reads data, and outputs air quality information to the console.
 
-## Instructions
+### Instructions
 
 1. Connect the PMS plantower sensor to your system.
 2. Run the `pm25_simpletest.py` script with the appropriate device name as a command-line argument (default is `/dev/ttyUSB0`).
    ```bash
    python3 pm25_simpletest.py /dev/ttyUSB0
 
-## Output
+### Output
 The script continuously reads data from the sensor and prints the concentration units (standard and environmental) for PM1.0, PM2.5, and PM10.0. Additionally, it outputs particle counts for different particle sizes.
 
 Concentration Units (standard)
@@ -60,16 +60,16 @@ Particles > 2.5um / 0.1L air: 200
 Particles > 5.0um / 0.1L air: 100
 Particles > 10 um / 0.1L air: 50
 
-# Sensirion SPS30
+## Sensirion SPS30
 
 **Authors:** Erik Liebergall, Marc Compere, Kaleb Nails  
 **Created:** 13 Oct 2023
 
-## Description
+### Description
 
 This directory contains code for the Sensirion SPS30 air quality sensor. The `pm25_SPS30_Senirion_Run.py` script interfaces with the sensor, reads data, and logs air quality information to a CSV file.
 
-## Instructions
+### Instructions
 
 1. Connect the Sensirion SPS30 sensor to your system.
 2. Run the `pm25_SPS30_Senirion_Run.py` script with the appropriate device name as a command-line argument (default is `/dev/ttyUSB0`).
@@ -108,7 +108,7 @@ Each row in the CSV file represents a set of air quality measurements at a speci
 
 
 
-# PMS plantower CSV File Format
+## PMS plantower CSV File Format
 
 The script outputs air quality information to a CSV file. The CSV format includes the following columns:
 
