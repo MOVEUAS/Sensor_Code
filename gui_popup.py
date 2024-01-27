@@ -15,36 +15,85 @@ root.title("MOVEUAS_WIZARD.exe")
 
 #This will actually run the sensors based on the json given
 def run_sensors(sensor_ports):
-    subprocess.run("pkill screen", shell=True,text=True)
-
-    #This is so i can get the home directory of any computer
-    #home_directory = os.path.expanduser('~')
+    #subprocess.run("pkill screen", shell=True,text=True)
 
 
+    bash_script_content = '#!/bin/bash\n\n'
 
-    for i in sensor_ports['alphasense']:
-        print(i)
-        try:
-            command = "sleep 15;./Alphasense/OPC_Simple_v2.py" +" " + i + ";exec sh"
+    # Loop through each sensor device
+    for i, device in enumerate(sensor_ports['alphasense'], start=0):
+        # Set the variable for each sensor
+        variable_name = f'alpha{i}_device'
+        device_port = sensor_ports['alphasense'][i]
+        bash_script_content += f'{variable_name}="{device_port}"\n'
+
+        # Start the logger for each sensor
+        bash_script_content += f'echo "Starting alpha{i} logger"\n'
+        bash_script_content += f'screen -dm -S alpha{i} python3 OPC_Simple_v2.py ${variable_name}\n\n'
+        #print(bash_script_content)
+
+
+
+
+    # Loop through each sensor device
+    for i, device in enumerate(sensor_ports['sensirion'], start=0):
+        # Set the variable for each sensor
+        variable_name = f'sensirion{i}_device'
+        device_port = sensor_ports['sensirion'][i]
+        bash_script_content += f'{variable_name}="{device_port}"\n'
+
+        # Start the logger for each sensor
+        bash_script_content += f'echo "Starting sensirion{i} logger"\n'
+        bash_script_content += f'screen -dm -S sensirion{i} python3 SPS30_Sensirion_Run.py ${variable_name}\n\n'
+        #print(bash_script_content)
+
+
+        # Loop through each sensor device
+        for i, device in enumerate(sensor_ports['PMS'], start=0):
+            # Set the variable for each sensor
+            variable_name = f'PMS{i}_device'
+            device_port = sensor_ports['PMS'][i]
+            bash_script_content += f'{variable_name}="{device_port}"\n'
+
+            # Start the logger for each sensor
+            bash_script_content += f'echo "Starting PMS{i} logger"\n'
+            bash_script_content += f'screen -dm -S PMS{i} python3 pm25_simpletest.py ${variable_name}\n\n'
+
+
+
+        print(bash_script_content)
+
+    # Write the Bash script to a file
+    with open('Sensor_Start_Script.sh', 'w') as bash_script_file:
+        bash_script_file.write(bash_script_content)
+
+    # Make the Bash script executable
+    subprocess.run(['chmod', '+x', 'Sensor_Start_Script.sh'])
+
+
+#    for i in sensor_ports['alphasense']:
+#        print(i)
+#        try:
+#            command = "sleep 15;./Alphasense/OPC_Simple_v2.py" +" " + i + ";exec sh"
             #p3 = subprocess.run(["sudo", "screen", "-dm",  "./OPC_Simple_v2.py"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # you can also put stderr to stdout
             #p3 = subprocess.run(["screen", "-dm","bash","-c" , "sleep 15;./Alphasense/OPC_Simple_v2.py;exec sh"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # you can also put stderr to stdout
 
-            p3 = subprocess.run(["screen", "-dm","bash","-c" , command], stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # you can also put stderr to stdout
+#            p3 = subprocess.run(["screen", "-dm","bash","-c" , command], stdout=subprocess.PIPE, stderr=subprocess.STDOUT) # you can also put stderr to stdout
 
 
 
 
 
-            print('----')
-            print('p3 = {}'.format(p3))
-            print('----')
+#            print('----')
+#            print('p3 = {}'.format(p3))
+#            print('----')
 
-        except subprocess.CalledProcessError as err:
-            print( "\n\ncaught an rsync() subprocess error: {0}".format(err) )
-            print( "exiting.")
-            sys.exit(-1)
+#        except subprocess.CalledProcessError as err:
+#            print( "\n\ncaught an rsync() subprocess error: {0}".format(err) )
+#            print( "exiting.")
+#            sys.exit(-1)
 
-        print('p.stdout = {}'.format(p3.stdout.decode('utf-8')))
+#        print('p.stdout = {}'.format(p3.stdout.decode('utf-8')))
 
         #print(command)
 
@@ -89,7 +138,6 @@ def run_sensors(sensor_ports):
 
         #run_code_command = f"screen -r alphasense{i.replace('/', '_')}"
         #subprocess.run(f"screen -r alphasense{i.replace('/', '_')}", shell=True,text=True)
-        print("REATTACHED")
         #subprocess.run("echo 'hello'", shell=True,text=True)
 
         #subprocess.run(f"screen -d", shell=True,text=True)
