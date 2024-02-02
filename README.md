@@ -1,3 +1,5 @@
+## GitHub Created and Managed By: Kaleb Nails ##
+
 # Air Quality Sensor Repository
 This repository contains code for different air quality sensors. Each directory represents a specific sensor model, and the code within each directory is tailored to that sensor. Authors listed are immediate authors to our club, of course a lot of this code is found from other online, and the are cited within the programs files themselves.
 
@@ -5,7 +7,6 @@ To pip install the dependent libraries run:
    ```bash
    pip install -r requirements.txt
 ``` 
-## GitHub Created and Managed By: Kaleb Nails ##
 
 # Sensor Models #
 
