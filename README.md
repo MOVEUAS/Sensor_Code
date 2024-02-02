@@ -5,7 +5,7 @@ To pip install the dependent libraries run:
    ```bash
    pip install -r requirements.txt
 
-## GitHub Created and Managed By: Kaleb Nails
+## GitHub Created and Managed By: Kaleb Nails ##
 
 # Sensor Models #
 
