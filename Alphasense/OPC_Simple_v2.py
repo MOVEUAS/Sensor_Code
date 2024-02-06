@@ -2,6 +2,7 @@
 #created : 10/6/2023
 #modified: 13 Dec 2023
 #from time import sleep
+import sys
 from usbiss.spi import SPI
 import opcng as opc
 import os
