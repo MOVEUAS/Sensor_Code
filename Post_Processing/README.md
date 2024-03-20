@@ -30,6 +30,7 @@ This is robust, but if sensor heading are changed from the sensors it will not w
 ## Usage Example
 
 ```bash
+cd ~/Sensor_Code/Post_Processing
 python post_processing.py 
 ```
 ## Dependencies
