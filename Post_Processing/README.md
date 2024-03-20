@@ -9,7 +9,10 @@ This is robust, but if sensor heading are changed from the sensors it will not w
 - **Sensor Data Organization:** The script organizes sensor data by sensor type and combines it into a single DataFrame.
 - **Column Interleaving:** Columns from each sensor are interleaved in the output DataFrame.
 - **CSV Output:** The combined and cleaned sensor data is saved as a CSV file with a timestamp in the filename.
-- **Variable Column Omision:** If you are missing a column or you have one you dont need, there is a .drop(columns=['...']) for each sensor. If you add something inside these brackets they will be removed from the final product.
+- **Variable Column Omision:** If you are missing a column or you have one you dont need, there is a
+  ```bash .drop(columns=['...'])
+
+ for each sensor. If you add something inside these brackets they will be removed from the final product.
 
 ## Usage
 
