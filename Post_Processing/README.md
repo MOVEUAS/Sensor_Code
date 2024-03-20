@@ -14,7 +14,7 @@ This is robust, but if sensor heading are changed from the sensors it will not w
   .drop(columns=['...'])
   ```
 
- for each sensor. If you add something inside these brackets they will be removed from the final product.
+   for each sensor. If you add something inside these brackets they will be removed from the final product.
 
 ## Usage
 
