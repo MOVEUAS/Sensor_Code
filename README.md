@@ -7,6 +7,8 @@ To pip install the dependent libraries run:
    ```bash
    pip install -r requirements.txt
 ``` 
+Also I have made some YouTube tutorials. They explain some simple things and issues you might run into. I will continue to update as the need arises.
+https://youtube.com/playlist?list=PLwAqsBL94ygYDSl61qIoNLhPo3zRYZZli&si=xE07LIelMbSo7oQt
 
 ## 📝 File Structure 
 ```text
