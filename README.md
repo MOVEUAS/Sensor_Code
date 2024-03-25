@@ -8,8 +8,7 @@ To pip install the dependent libraries run:
    pip install -r requirements.txt
 ``` 
 
-## 📝 File Structure Before post processing after collecting data.
-
+## 📝 File Structure 
 ```text
 📦Sensor_Code
  ┣ 📂Alphasense
