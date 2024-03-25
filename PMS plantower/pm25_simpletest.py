@@ -61,6 +61,7 @@ reset_pin = None
 
 
 dev1='/dev/ttyUSB0'
+devLabel = 'unlabeled'
 # dev2='/dev/ttyUSB2'
 
 
@@ -73,16 +74,17 @@ if len(sys.argv)==1:
     time.sleep(2.5)
 
 
-
 if len(sys.argv)>1:
     print('using command line arg, and provided device!')
     dev1=sys.argv[1]
 
+# Plantower does not report unique serial number, so must label reporting device on the command line
+if len(sys.argv)>2:
+    devLabel=sys.argv[2]
+    print('using command line arg 2, device label: {}'.format(devLabel)) # make this match the handwritten label using the cmd line arg #2
+
 devName=os.path.basename(dev1) # get device name for logfile name
 print('using devName=[{0}]'.format(devName))
-
-
-
 
 
 uart = serial.Serial(dev1, baudrate=9600, timeout=0.25)
@@ -97,7 +99,9 @@ pm25 = PM25_UART(uart, reset_pin)
 #i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
 # Connect to a PM2.5 sensor over I2C
 #pm25 = PM25_I2C(i2c, reset_pin)
-fname = '{0}_pm25_simplest_plantower_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
+#fname = '{0}_pm25_simplest_plantower_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S") )
+fname = '{0}_pm25_simplest_plantower_{1}_CSV.csv'.format(datetime.now().strftime("%Y_%m_%d__%H_%M_%S"),devLabel ) # <-- handwritten label (not usb device)
+
 file = open(fname,'w')
 
 print("Found PM2.5 sensor, reading data...")
