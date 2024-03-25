@@ -8,11 +8,11 @@ This is robust, but if sensor heading are changed from the sensors it will not w
 Note the sensors automatically make their csv in the directories directly above /sensor_Code, to run post processing move them into Sensor_Code
 
 
-## 📝 File Structure Before post processing after collecting data.
+## 📝 File Structure Before post processing after collecting data, after moving the relevant CSV's into Sensor_Code.
 
 ```text
-📦Sensor_code
- ┣ 📂Alphasense                         // Source Website
+📦Sensor_Code
+ ┣ 📂Alphasense                        
  ┃ ┣ 📄OPC_Simple_v2.py
  ┃ ┣ 📄README.md
  ┃ ┗ 📄start_Alphasense_loggers.sh
@@ -38,13 +38,17 @@ Note the sensors automatically make their csv in the directories directly above 
  ┣ 📄Sensor_Start_Script.sh
  ┣ 📄gui_popup.py
  ┣ 📄requirements.txt
- ┣ 📄sensor_UART_configs.json
+ ┣ 📄YYYY_MM_DD_##_##_##_Sensirion_sps30_{serial code}.csv
+ ┣ 📄YYYY_MM_DD_##_##_##_pm25_simplest_plantower_pt#_CSV.csv
+ ┣ 📄YYYY_MM_DD_##_##_##_Alphasense_OPC-N3-{serial code}.csv
  ┗ 📄README.md
 ```
-## File structure after post processing
+
+## File structure after post processing, it should look like this, and new files should appear in Post_Processing. Once you are done delete the CSV's in Sensor_Code after you backed them up.
+
 ```text
-📦Sensor_code
- ┣ 📂Alphasense                         // Source Website
+📦Sensor_Code
+ ┣ 📂Alphasense                         
  ┃ ┣ 📄OPC_Simple_v2.py
  ┃ ┣ 📄README.md
  ┃ ┗ 📄start_Alphasense_loggers.sh
@@ -54,6 +58,10 @@ Note the sensors automatically make their csv in the directories directly above 
  ┃ ┣ 📄 pm25_simpletest.py
  ┃ ┗ 📄start_Plantower_loggers.sh
  ┣ 📂Post_Processing
+ ┃ ┣ 📄Post_Processing.py
+ ┃ ┣ 📄YYYY_MM_DD_Sensirion.csv
+ ┃ ┣ 📄YYYY_MM_DD_plantower.csv
+ ┃ ┣ 📄YYYY_MM_DD_Alphasense.csv
  ┃ ┣ 📄Post_Processing.py
  ┃ ┗ 📄README.md
  ┣ 📂Sensirion
@@ -71,6 +79,9 @@ Note the sensors automatically make their csv in the directories directly above 
  ┣ 📄gui_popup.py
  ┣ 📄requirements.txt
  ┣ 📄sensor_UART_configs.json
+ ┣ 📄YYYY_MM_DD_##_##_##_Sensirion_sps30_{serial code}.csv
+ ┣ 📄YYYY_MM_DD_##_##_##_pm25_simplest_plantower_pt#_CSV.csv
+ ┣ 📄YYYY_MM_DD_##_##_##_Alphasense_OPC-N3-{serial code}.csv
  ┗ 📄README.md
 ```
 
