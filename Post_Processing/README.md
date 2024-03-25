@@ -8,7 +8,7 @@ This is robust, but if sensor heading are changed from the sensors it will not w
 Note the sensors automatically make their csv in the directories directly above /sensor_Code, to run post processing move them into Sensor_Code
 
 
-# 📝 File Structure Before post processing after collecting data, after moving the relevant CSV's into Sensor_Code.
+### 📝 File Structure Before post processing after collecting data, after moving the relevant CSV's into Sensor_Code.
 
 ```text
 📦Sensor_Code
@@ -44,7 +44,7 @@ Note the sensors automatically make their csv in the directories directly above 
  ┗ 📄README.md
 ```
 
-# File structure after post processing, it should look like this, and new files should appear in Post_Processing. Once you are done delete the CSV's in Sensor_Code after you backed them up.
+### File structure after post processing, it should look like this, and new files should appear in Post_Processing. Once you are done delete the CSV's in Sensor_Code after you backed them up.
 
 ```text
 📦Sensor_Code
