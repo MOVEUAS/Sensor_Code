@@ -11,7 +11,7 @@ To pip install the dependent libraries run:
 ## 📝 File Structure Before post processing after collecting data.
 
 ```text
-📦Sensor_code
+📦Sensor_Code
  ┣ 📂Alphasense
  ┃ ┣ 📄OPC_Simple_v2.py
  ┃ ┣ 📄README.md
