@@ -4,6 +4,7 @@
 import pandas as pd
 import os
 from datetime import datetime
+import numpy as np
 
 
 
@@ -33,23 +34,23 @@ def Process(df):
         result = [element for element in columns if name[:-2] in element]
         new_column += result #it was in a double matrix in a matrix, this stops it from being that way
  
+    new_column = np.unique(new_column) #I need the unique, is the easiest way to removing some duplicates I accidentally created
     print(f"\nthe new organized column is \n {new_column}")
-    columns = new_column
-
+    columns = new_column 
 
     # Create an empty DataFrame with the specified columns
     result = pd.DataFrame(columns=columns)
 
-    # Iterate over the sensor data\
+    # Iterate over the sensor data
     sensor_count = 0
     for df_name, df_data in df.items():
         # Iterate over the columns in the sensor data
         #print(f"df_data {df_name} is:{df_data}")
-
+        
         for col in df_data.keys():
             # Append columns from each sensor to the interleaved_columns list
             result[f"{col}_{sensor_count}"] = df_data[col]
-        sensor_count =+ 1
+        sensor_count = sensor_count + 1
         
         
     #print(result)
@@ -103,7 +104,7 @@ for filename in os.listdir(parent_dir):
             #print(Alphasense_df[df_name].keys())
 
             #remove extra columns:
-            Alphasense_df[df_name].drop(columns=['Date Label'," Bin 0", " Bin 1", " Bin 2", " Bin 3", " Bin 4", " Bin 5", " Bin 6", " Bin 7"," Bin 8", " Bin 9", " Bin 10", " Bin 11", " Bin 12", " Bin 13", " Bin 14", " Bin 15"," Bin 16", " Bin 17", " Bin 18", " Bin 19", " Bin 20", " Bin 21", " Bin 22", " Bin 23"," Bin1 MToF", "Bin3 MToF", "Bin5 MToF", "Bin7 MToF", "Sampling Period", "SFR", "Checksum", "Fan rev count","Laser status"], inplace=True)
+            Alphasense_df[df_name].drop(columns=['Date Label'," Bin 0", " Bin 1", " Bin 2", " Bin 3", " Bin 4", " Bin 5", " Bin 6", " Bin 7"," Bin 8", " Bin 9", " Bin 10", " Bin 11", " Bin 12", " Bin 13", " Bin 14", " Bin 15"," Bin 16", " Bin 17", " Bin 18", " Bin 19", " Bin 20", " Bin 21", " Bin 22", " Bin 23"," Bin1 MToF", "Bin3 MToF", "Bin5 MToF", "Bin7 MToF", "Sampling Period", "SFR", "Checksum", "Fan rev count","Laser status",'#RejectGlitch','#RejectLongTOF','#RejectOutOfRange','#RejectRatio'], inplace=True)
 
 #This runs post processing if the files exist, this a simple solution
 if Sensirion_count > 0:
