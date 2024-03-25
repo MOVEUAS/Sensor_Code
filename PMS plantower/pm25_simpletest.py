@@ -108,7 +108,7 @@ print("Found PM2.5 sensor, reading data...")
 
 #adds heading columns
 #Add Labels to the top of the file TEST this works
-titleStr = ',Date Label, Dates (YMD), Sensor 1, pm1.0 standard ug/m3, pm2.5 standard ug/m3, pm10.0 standard ug/m3, pm1.0 env ug/m3, pm2.5 env ug/m3, pm10.0 env ug/m3,particles 0.3um, particles 0.5um, particles 1.0um, particles 2.5um, particles 5.0um, particles 10.0um'#, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
+titleStr = 'Date Label, Dates (YMD), Sensor 1, pm1.0 standard ug/m3, pm2.5 standard ug/m3, pm10.0 standard ug/m3, pm1.0 env ug/m3, pm2.5 env ug/m3, pm10.0 env ug/m3,particles 0.3um, particles 0.5um, particles 1.0um, particles 2.5um, particles 5.0um, particles 10.0um'#, Dates (YMD), Sensor 2, pm10 standard, pm25 standard, pm100 standard, pm10 env, pm25 env, pm100 env,particles 03um, particles 05um, particles 10um, particles 25um, particles 50um, particles 100um'
 file.write(titleStr  +"\n")
 file.flush()
 
@@ -184,7 +184,7 @@ while True:
     #dataStr1 = ', Data1:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"])
     #dataStr2 = ', Data2:, {0}, {1}, {2}, {3}, {4}, {5}'.format(aqdata2["particles 03um"],aqdata2["particles 05um"],aqdata2["particles 10um"],aqdata2["particles 25um"],aqdata2["particles 50um"],aqdata2["particles 100um"])
 
-    dataStr1 = ', Data1:, {0}, {1}, {2},    {3}, {4}, {5},    {6}, {7}, {8}, {9}, {10}, {11}'.format( \
+    dataStr1 = ' Data1:, {0}, {1}, {2},    {3}, {4}, {5},    {6}, {7}, {8}, {9}, {10}, {11}'.format( \
                     aqdata["pm10 standard"],       \
                     aqdata["pm25 standard"],       \
                     aqdata["pm100 standard"],      \
