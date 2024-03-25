@@ -39,6 +39,7 @@ https://youtube.com/playlist?list=PLwAqsBL94ygYDSl61qIoNLhPo3zRYZZli&si=xE07LIel
  ┣ 📄Sensor_Start_Script.sh
  ┣ 📄gui_popup.py
  ┣ 📄requirements.txt
+ ┣ 📄.gitnore
  ┣ 📄sensor_UART_configs.json
  ┗ 📄README.md
 ```
