@@ -12,7 +12,7 @@ To pip install the dependent libraries run:
 
 ```text
 📦Sensor_code
- ┣ 📂Alphasense                         // Source Website
+ ┣ 📂Alphasense
  ┃ ┣ 📄OPC_Simple_v2.py
  ┃ ┣ 📄README.md
  ┃ ┗ 📄start_Alphasense_loggers.sh
