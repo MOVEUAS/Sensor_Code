@@ -8,6 +8,39 @@ To pip install the dependent libraries run:
    pip install -r requirements.txt
 ``` 
 
+## 📝 File Structure Before post processing after collecting data.
+
+```text
+📦Sensor_code
+ ┣ 📂Alphasense                         // Source Website
+ ┃ ┣ 📄OPC_Simple_v2.py
+ ┃ ┣ 📄README.md
+ ┃ ┗ 📄start_Alphasense_loggers.sh
+ ┣ 📂PMS plantower
+ ┃ ┣ 📄.gitkeep
+ ┃ ┣ 📄README.md
+ ┃ ┣ 📄 pm25_simpletest.py
+ ┃ ┗ 📄start_Plantower_loggers.sh
+ ┣ 📂Post_Processing
+ ┃ ┣ 📄Post_Processing.py
+ ┃ ┗ 📄README.md
+ ┣ 📂Sensirion
+ ┃ ┣ 📄.gitkeep
+ ┃ ┣ 📄 README.md
+ ┃ ┣ 📄SPS30_Senirion_run.py
+ ┃ ┣ 📄exampleReadSPS30.py
+ ┃ ┣ 📄sps30.py
+ ┃ ┣ 📄start_Sensirion_loggers.sh
+ ┃ ┗ 📄stop_Sensirion_loggers.sh
+ ┣ 📂Viasala
+ ┃ ┗ 📄.gitkeep
+ ┣ 📄Alphasense_Start_Script.sh
+ ┣ 📄Sensor_Start_Script.sh
+ ┣ 📄gui_popup.py
+ ┣ 📄requirements.txt
+ ┣ 📄sensor_UART_configs.json
+ ┗ 📄README.md
+```
 # Sensor Models #
 
 ## ALPHASENSE OPC
