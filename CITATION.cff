@@ -1,0 +1,9 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below. Additional authors and contributors are cited in individual files or READMEs."
+authors:
+  - family-names: Nails
+    given-names: Kaleb
+    orcid: https://orcid.org/0009-0007-8786-837X
+title: "MOVEUAS PM sensor software"
+version: patch-1
+date-released: 2023-07-19
