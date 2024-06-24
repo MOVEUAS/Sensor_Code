@@ -125,3 +125,7 @@ python post_processing.py
 - datetime
 
 ---
+# plot_generator.py
+This is an independent program from what is mentioned above. This uses current file formating as of 2024 to create graphs for a specific amount of sensors listed in the hardcoded program. This should help quick data generation. It is important to note it downsamples down to 20 minutes, so don't use it on very short data sets. Below is a sample image of the type of graph it will generate given the correct inputs.
+![image](https://github.com/MOVEUAS/Sensor_Code/assets/117048000/8cd80975-528e-47b7-bceb-4e5dbd0442fd)
+
